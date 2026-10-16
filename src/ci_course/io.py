@@ -32,7 +32,7 @@ def load_measurements(path=None, errors=None):
     path : str or pathlib.Path, optional
         The CSV file to read. Defaults to the sample data bundled with the
         package.
-    errors : list, optional
+    errors : None, optional
         Any row that could not be parsed is appended to this list.
 
     Returns
@@ -40,6 +40,9 @@ def load_measurements(path=None, errors=None):
     dict
         A mapping of column name to :class:`numpy.ndarray` of float.
     """
+    if errors is None:
+        errors = []
+
     if path is None:
         path = sample_data_path()
 
